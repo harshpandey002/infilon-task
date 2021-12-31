@@ -7,7 +7,9 @@ export default function UserDetails({ data }) {
       <td>{data.email}</td>
       <td>{data.first_name}</td>
       <td>{data.last_name}</td>
-      <td>{data.avatar}</td>
+      <td className="avatar">
+        <img src={data.avatar} alt={data.first_name} />
+      </td>
     </tr>
   );
 }

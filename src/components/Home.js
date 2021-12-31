@@ -23,7 +23,7 @@ export default function Home() {
         </thead>
         <tbody>
           {userData.user.map((data) => (
-            <UserDetails data={data} />
+            <UserDetails key={data.id} data={data} />
           ))}
         </tbody>
       </Table>

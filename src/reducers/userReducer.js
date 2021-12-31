@@ -1,4 +1,4 @@
-import { GET_USER_DATA } from "../actions/actionTypes";
+import { GET_USER_DATA, DELETE_USER_DATA } from "../actions/actionTypes";
 
 const initState = {
   user: [],
@@ -6,9 +6,18 @@ const initState = {
 
 const gamesReducer = (state = initState, action) => {
   switch (action.type) {
-    case GET_USER_DATA:
-      localStorage.setItem("users", JSON.stringify(action.payload.users));
-      return { ...state, user: action.payload.users };
+    case GET_USER_DATA: {
+      localStorage.setItem("users", JSON.stringify(action.payload));
+      return { ...state, user: action.payload };
+    }
+    case DELETE_USER_DATA: {
+      const filterUsers = state.user.filter(
+        (user) => user.id !== action.payload
+      );
+      localStorage.removeItem("users");
+      localStorage.setItem("users", JSON.stringify(filterUsers));
+      return { ...state, user: filterUsers };
+    }
     default:
       return { ...state };
   }

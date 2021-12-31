@@ -1,36 +1,30 @@
 import "../styles/Home.scss";
 import Table from "react-bootstrap/Table";
 
+//Redux
+import { useSelector } from "react-redux";
+import UserDetails from "./userDetails";
+
 export default function Home() {
+  const userData = useSelector((state) => state.users);
+
+  console.log();
   return (
     <div className="home--container">
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
+            <th>Id</th>
+            <th>Email</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Username</th>
+            <th>Avatar</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {userData.user.map((data) => (
+            <UserDetails data={data} />
+          ))}
         </tbody>
       </Table>
     </div>

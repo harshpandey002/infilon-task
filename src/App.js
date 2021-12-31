@@ -1,18 +1,19 @@
 import { useEffect } from "react";
-import "./styles/App.scss";
 import { useDispatch } from "react-redux";
 import {getUsers} from "./actions/userAction"
+import Home from "./components/Home";
+import "./styles/App.scss";
 
 function App() {
   const dispatch = useDispatch();
   
   useEffect(() => {
    dispatch(getUsers());
-  }, [])
+  })
   
   return (
     <div className="App">
-      <h1>Hi Harsh</h1>
+      <Home />
     </div>
   );
 }

@@ -8,7 +8,6 @@ import UserDetails from "./userDetails";
 export default function Home() {
   const userData = useSelector((state) => state.users);
 
-  console.log();
   return (
     <div className="home--container">
       <Table striped bordered hover>
